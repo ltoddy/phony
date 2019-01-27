@@ -1,0 +1,11 @@
+[package]
+name = "phony"
+version = "0.1.0"
+authors = ["ltoddy <taoliu14@acm.org>"]
+description = "generates phony data"
+keywords = ["faker", "data", "generator"]
+license = "MIT"
+readme = "README.md"
+edition = "2018"
+
+[dependencies]
