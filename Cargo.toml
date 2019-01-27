@@ -3,9 +3,13 @@ name = "phony"
 version = "0.1.0"
 authors = ["ltoddy <taoliu14@acm.org>"]
 description = "generates phony data"
-keywords = ["faker", "data", "generator"]
+keywords = ["data", "generator"]
 license = "MIT"
 readme = "README.md"
+documentation = "https://docs.rs/phony/0.1.0/phony/"
+homepage = "https://github.com/ltoddy/phony"
+repository = "https://github.com/ltoddy/phony"
+categories = ["data"]
+license-file = "LICENSE"
+maintenance = { status = "actively-developed" }
 edition = "2018"
-
-[dependencies]
