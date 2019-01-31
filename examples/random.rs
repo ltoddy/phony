@@ -2,7 +2,6 @@ extern crate phony;
 
 use phony::random::Random;
 
-
 fn main() {
     let mut random = Random::new(8191);
 
