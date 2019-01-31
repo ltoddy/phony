@@ -10,6 +10,4 @@ documentation = "https://docs.rs/phony/0.1.0/phony/"
 homepage = "https://github.com/ltoddy/phony"
 repository = "https://github.com/ltoddy/phony"
 categories = ["data"]
-license-file = "LICENSE"
-maintenance = { status = "actively-developed" }
 edition = "2018"
