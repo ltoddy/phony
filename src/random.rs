@@ -103,7 +103,7 @@ pub struct Random {
 impl Random {
     pub fn new(seed: usize) -> Self {
         Random {
-            generator: MersenneTwister::new(seed)
+            generator: MersenneTwister::new(seed),
         }
     }
 
