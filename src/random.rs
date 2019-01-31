@@ -17,6 +17,18 @@ const K_UPPER_BITS: usize = 0x8000_0000;
 const K_LOWER_BITS: usize = 0x7fff_ffff;
 
 impl MersenneTwister {
+    /// example:
+    /// ```rust
+    /// let mut mt = MersenneTwister::new(0);
+    /// println!(mt.gen());
+    /// println!(mt.gen());
+    /// ```
+    #[inline]
+    pub fn new(seed: usize) -> Self {
+        Self::new_with_seed(seed)
+    }
+
+
     fn new_with_seed(seed: usize) -> Self {
         let mut register = Vec::with_capacity(N);
         let state = 0;
@@ -29,11 +41,6 @@ impl MersenneTwister {
         }
 
         MersenneTwister { register, state }
-    }
-
-    #[inline]
-    pub fn new(seed: usize) -> Self {
-        Self::new_with_seed(seed)
     }
 
     fn twister(&mut self) {
@@ -70,6 +77,8 @@ impl MersenneTwister {
 
     #[inline]
     pub fn reload_register(&mut self, register: Vec<usize>) {
+        // Need to explain this function signature here.
+        // Need to explain parameter `register`.
         self.state = 0;
         self.register = register;
     }
