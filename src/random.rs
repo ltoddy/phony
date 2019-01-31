@@ -17,17 +17,10 @@ const K_UPPER_BITS: usize = 0x8000_0000;
 const K_LOWER_BITS: usize = 0x7fff_ffff;
 
 impl MersenneTwister {
-    /// example:
-    /// ```rust
-    /// let mut mt = MersenneTwister::new(0);
-    /// println!(mt.gen());
-    /// println!(mt.gen());
-    /// ```
     #[inline]
     pub fn new(seed: usize) -> Self {
         Self::new_with_seed(seed)
     }
-
 
     fn new_with_seed(seed: usize) -> Self {
         let mut register = Vec::with_capacity(N);
@@ -100,5 +93,32 @@ mod tests {
             set.insert(temp.clone());
         }
         assert_eq!(set.len(), total);
+    }
+}
+
+pub struct Random {
+    generator: MersenneTwister,
+}
+
+impl Random {
+    pub fn new(seed: usize) -> Self {
+        Random {
+            generator: MersenneTwister::new(seed)
+        }
+    }
+
+    /// returns a random integer between two values. [min, max)
+    /// min: lower bound value.
+    /// max: upper bound value.
+    #[inline]
+    pub fn random_int(&mut self, min: usize, max: usize) -> usize {
+        (self.generator.gen() + min) % max
+    }
+
+    // returns a random digit/number.
+    // between 0 and 9. [0, 9]
+    #[inline]
+    pub fn random_digit(&mut self) -> usize {
+        self.random_int(0, 10)
     }
 }
