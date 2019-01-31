@@ -1,1 +1,1 @@
-mod random;
+pub mod random;
