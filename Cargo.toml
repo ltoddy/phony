@@ -1,9 +1,10 @@
 [package]
 name = "phony"
-version = "0.1.0"
-authors = ["ltoddy <taoliu14@acm.org>"]
+version = "0.1.1"
+authors = ["ltoddy <taoliu0509@gmail.com>"]
 description = "generates phony data"
 keywords = ["data", "generator"]
+exclude = ["/.travis.yml"]
 license = "MIT"
 readme = "README.md"
 documentation = "https://docs.rs/phony/0.1.0/phony/"
@@ -11,3 +12,6 @@ homepage = "https://github.com/ltoddy/phony"
 repository = "https://github.com/ltoddy/phony"
 categories = ["data"]
 edition = "2018"
+
+[badges]
+travis-ci = { repository = "ltoddy/phony", branch = "master" }
