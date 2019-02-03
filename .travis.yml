@@ -7,6 +7,10 @@ matrix:
   - rust: nightly
   fast_finish: true
 
+cache: cargo
+before_cache:
+  - chmod -R a+r $HOME/.cargo
+
 env:
 - RUST_TEST_THREADS=1
 
@@ -19,4 +23,4 @@ script:
   - cargo fmt --all -- --check `find src -iname "*.rs"`
   - cargo build --verbose --all
   - cargo test --verbose --all
-  - cargo clippy -- -D clippy::all
+  - cargo clippy --release -- -D clippy::all
