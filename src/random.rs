@@ -123,4 +123,9 @@ impl Random {
     pub fn random_digit(&mut self) -> usize {
         self.random_int(0, 10)
     }
+
+    #[inline]
+    pub fn choice<T: Clone>(&mut self, elements: &[T]) -> T {
+        elements[self.random_int(0, elements.len())].clone()
+    }
 }

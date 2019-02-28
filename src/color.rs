@@ -167,4 +167,8 @@ impl Provider {
             all_colors,
         }
     }
+
+    //    pub fn safe_color_name(&self) -> String {
+    //    TODO
+    //    }
 }
