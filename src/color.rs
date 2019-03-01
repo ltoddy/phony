@@ -1,19 +1,36 @@
 use std::collections::HashMap;
 
+use super::random::Random;
+
 pub struct Provider {
     #[allow(dead_code)]
-    safe_colors: Vec<&'static str>,
+    safe_colors: Vec<String>,
 
     #[allow(dead_code)]
     all_colors: HashMap<&'static str, &'static str>,
+
+    selector: Random,
 }
 
 impl Provider {
     #[allow(dead_code)]
-    pub fn new() -> Self {
+    pub fn new(selector: Random) -> Self {
         let safe_colors = vec![
-            "black", "maroon", "green", "navy", "olive", "purple", "teal", "lime", "blue",
-            "silver", "gray", "yellow", "fuchsia", "aqua", "white",
+            "black".to_string(),
+            "maroon".to_string(),
+            "green".to_string(),
+            "navy".to_string(),
+            "olive".to_string(),
+            "purple".to_string(),
+            "teal".to_string(),
+            "lime".to_string(),
+            "blue".to_string(),
+            "silver".to_string(),
+            "gray".to_string(),
+            "yellow".to_string(),
+            "fuchsia".to_string(),
+            "aqua".to_string(),
+            "white".to_string(),
         ];
 
         let all_colors = [
@@ -165,10 +182,12 @@ impl Provider {
         Provider {
             safe_colors,
             all_colors,
+
+            selector,
         }
     }
 
-    //    pub fn safe_color_name(&self) -> String {
-    //    TODO
-    //    }
+    pub fn safe_color_name(&mut self) -> String {
+        self.selector.choice(&self.safe_colors)
+    }
 }

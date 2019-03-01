@@ -1,6 +1,6 @@
 //! # algorithm: [`Mersenne Twister Algorithm`](https://en.wikipedia.org/wiki/Mersenne_Twister).
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 struct MersenneTwister {
     register: Vec<usize>,
     state: usize,
@@ -98,6 +98,7 @@ mod tests {
     }
 }
 
+#[derive(Clone)]
 pub struct Random {
     generator: MersenneTwister,
 }
