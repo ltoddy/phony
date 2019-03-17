@@ -1,5 +1,10 @@
+#[macro_use]
+pub mod macros;
+
 mod color;
 pub mod random;
+
+// ------------------------
 
 pub struct Provider {
     pub color: color::Provider,
