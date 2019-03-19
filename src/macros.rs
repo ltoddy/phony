@@ -15,11 +15,7 @@ macro_rules! hash_map {
     };
 
     ($($key: expr => $value: expr),*) => {
-        {
-            let mut hash_map = hash_map!();
-            $(hash_map.insert($key, $value);)*
-            hash_map
-        }
+        vec![$(($key, $value)),*].into_iter().collect::<std::collections::HashMap<_, _>>()
     };
     ($($key: expr => $value: expr,)*) => {
         hash_map!($($key => $value),*)
