@@ -187,6 +187,7 @@ impl Provider {
         }
     }
 
+    #[inline]
     pub fn color_name(&mut self) -> String {
         self.selector.choice(
             &self
@@ -197,6 +198,7 @@ impl Provider {
         )
     }
 
+    #[inline]
     pub fn safe_color_name(&mut self) -> String {
         self.selector.choice(
             &self
@@ -207,6 +209,7 @@ impl Provider {
         )
     }
 
+    #[inline]
     pub fn hex_color(&mut self) -> String {
         self.selector.choice(
             &self
@@ -217,6 +220,7 @@ impl Provider {
         )
     }
 
+    #[inline]
     pub fn safe_hex_color(&mut self) -> String {
         self.selector.choice(
             &self
@@ -225,6 +229,33 @@ impl Provider {
                 .map(std::clone::Clone::clone)
                 .collect::<Vec<_>>(),
         )
+    }
+
+    fn hex_to_rgb(hex: String) -> (u8, u8, u8) {
+        let hex = hex.chars().skip(1).collect::<Vec<_>>();
+        let char_to_num_mapper: HashMap<char, u8> = hash_map! {
+            '0' => 0,  '1' => 1,  '2' => 2,  '3' => 3,
+            '4' => 4,  '5' => 5,  '6' => 6,  '7' => 7,
+            '8' => 8,  '9' => 9,  'A' => 10, 'B' => 11,
+            'C' => 12, 'D' => 13, 'E' => 14, 'F' => 15,
+        };
+        let c0 = char_to_num_mapper.get(&hex[0]).unwrap();
+        let c1 = char_to_num_mapper.get(&hex[1]).unwrap();
+        let c2 = char_to_num_mapper.get(&hex[2]).unwrap();
+        let c3 = char_to_num_mapper.get(&hex[3]).unwrap();
+        let c4 = char_to_num_mapper.get(&hex[4]).unwrap();
+        let c5 = char_to_num_mapper.get(&hex[5]).unwrap();
+        (c0 * c1, c2 * c3, c4 * c5)
+    }
+
+    pub fn rgb_color(&mut self) -> String {
+        let (r, g, b) = Self::hex_to_rgb(self.hex_color());
+        format!("{},{},{}", r, g, b)
+    }
+
+    pub fn rgb_css_color(&mut self) -> String {
+        let (r, g, b) = Self::hex_to_rgb(self.hex_color());
+        format!("rgb({},{},{})", r, g, b)
     }
 }
 
