@@ -1,6 +1,6 @@
 [package]
 name = "phony"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["ltoddy <taoliu0509@gmail.com>"]
 description = "generates phony data"
 keywords = ["data", "phony", "generator"]
